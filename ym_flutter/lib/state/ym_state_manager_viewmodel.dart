@@ -71,7 +71,7 @@ class YmStateManagerViewModel with YmStyle, YmGlobal{
                   );
                 }(),);
               }
-              return YmStateManagerStyleStatelessWidget(title, pageType: type);
+              return YmStateManagerStyleStatefulWidget(title, pageType: type);
             })
     );
   }

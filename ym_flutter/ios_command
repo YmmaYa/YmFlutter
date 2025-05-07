@@ -1,0 +1,30 @@
+
+如果测试性能，改用 Release 模式（但无法使用 DevTools 分析）：
+flutter run ios --enable-impeller --release --flavor base -t lib/main.dart
+
+
+--profile 模式的限制
+** Flutter 的 Profile 模式（性能分析模式）仅支持真机设备（Physical Device）
+** 模拟器运行的是 x86 架构的 iOS 系统，而 Profile 模式需要 ARM 架构的真机环境。
+flutter run ios --enable-impeller --profile --flavor base -t lib/main.dart
+
+
+如果用模拟器，只是调试 UI，可以使用 Debug 模式：
+flutter run ios --enable-impeller --debug --flavor base -t lib/main.dart
+
+
+如果只是测试 Impeller，可以去掉 --profile：
+flutter run ios --enable-impeller --flavor base -t lib/main.dart
+---------------------------------------------------------------------------
+
+❌：The Xcode project does not define custom schemes. You cannot use the --flavor option
+  原因：
+  （1）Flutter 的 --flavor 选项需要 Xcode 项目配置自定义 Scheme
+     ** Flutter 的 --flavor 用于指定构建变体（如开发、生产环境），但需要 Xcode 项目提前配置好对应的 Scheme。
+  （2）你的 iOS 项目未设置 Flavors（或 Schemes 未正确配置）
+    ** 默认情况下，Flutter 生成的 iOS 项目只有一个 Runner Scheme，无法直接使用 --flavor。
+  解决方案：
+  方法 1：配置 Xcode Schemes（推荐） 见（assets/command/方法1配置 Xcode Schemes（推荐）.png）
+  方法 2：临时移除 --flavor（快速修复）,如果只是测试，可以去掉 --flavor：
+            flutter run ios --enable-impeller -t lib/main.dart
+  方法3：替代方案（Dart 变量），如果不想配置 Xcode Schemes，可以用 Dart 环境变量区分环境
