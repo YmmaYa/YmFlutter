@@ -34,7 +34,7 @@ dependencies:
   event_bus: ^2.0.0
   get: ^4.6.5
   get_storage: ^2.0.3
-  provider: ^6.0.0  # 确保版本≥6.0.0（支持空安全）
+  provider: ^6.0.5
 
 
 
@@ -67,6 +67,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/products/
     - assets/levelIcon/
   #   - images/a_dot_ham.jpeg
 
