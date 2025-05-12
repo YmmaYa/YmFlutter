@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ym_flutter/animation/ym_animation_style_widget.dart';
 import 'package:ym_flutter/animation/ym_animation_viewModel.dart';
+import 'package:ym_flutter/dart/dart_demo.dart';
 import 'package:ym_flutter/optimization/ym_optimization_viewmodel.dart';
 import 'package:ym_flutter/state/provider/ym_provider_cart_model.dart';
 import 'package:ym_flutter/state/ym_state_manager_style_widget.dart';
@@ -16,6 +17,7 @@ import 'optimization/ym_optimization_style_widget.dart';
 
 main() async {
   await GetStorage.init(); // 初始化
+  DartDemo.instance.dartDemoMain();
   runApp(ChangeNotifierProvider(
       create: (context) => YmProviderCartModel(), // 提供购物车数据
       child: const MyApp()));
