@@ -12,6 +12,7 @@ import 'package:ym_flutter/state/ym_state_manager_style_widget.dart';
 import 'package:ym_flutter/state/ym_state_manager_viewmodel.dart';
 import 'package:ym_flutter/tool/ym_global.dart';
 import 'package:ym_flutter/tool/ym_style.dart';
+import 'package:ym_flutter/widget/widget_demo0.dart';
 
 import 'optimization/ym_optimization_style_widget.dart';
 
@@ -69,9 +70,8 @@ class _MyHomePageState extends State<MyHomePage>with YmStyle,YmGlobal {
       return const YmStateManagerStyleStatelessWidget("Flutter 状态管理", pageType:YmStateManagerPages.ymStateManagerPageHome);
     }else if(name == "YmOptimizationStyleStatelessWidget"){
       return const YmOptimizationStyleStatelessWidget("Flutter 性能优化",pageType: YmOptimizationPages.ymOptimizationPageHome);
-    }
-    if (widgetMap.containsKey(name)) {
-      return widgetMap[name]!();
+    }else if(name == "WidgetDemo0Widget"){
+      return const WidgetDemo0Widget();
     }
     return const Placeholder(); // 或者返回一个默认 Widget
   }
@@ -80,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage>with YmStyle,YmGlobal {
   Widget build(BuildContext context) {
     // 使用定义的类型
     const List<PageItem> items = [
+      PageItem(name: "Flutter Widget", page: "WidgetDemo0Widget", color: Color(0xA00000FF)),
       PageItem(name: "Flutter 动画", page: "YmAnimationStyleStatelessWidget", color: Color(0xFF42fbc6)),
       PageItem(name: "Flutter 状态管理", page: "YmStateManagerStyleStatelessWidget", color: Color(0xaa5534DB)),
       PageItem(name: "Flutter 性能优化", page: "YmOptimizationStyleStatelessWidget", color: Color(0xaaFFCD44)),
