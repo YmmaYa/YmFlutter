@@ -1,0 +1,30 @@
+
+Dart 的事件循环(Event Loop)在本质上可以理解为一个 while 循环，
+    但它是一个高度优化的、特定用途的循环，专门用于处理异步任务调度。
+
+具体实现层次
+1、Dart VM 层：
+    ❄️ 每个Isolate有独立的事件循环
+    ❄️ 实际实现是用C++编写的更高效循环结构
+    ❄️ 包含对定时器、I/O等系统事件的监听
+2、近似伪代码表示:
+        void eventLoop() {
+              while (true) {
+                    // 1. 处理所有微任务
+                    while (microtaskQueue.isNotEmpty) {
+                      var microtask = microtaskQueue.removeFirst();
+                      microtask.execute();
+                    }
+
+                    // 2. 处理一个事件队列任务
+                    if (eventQueue.isNotEmpty) {
+                      var event = eventQueue.removeFirst();
+                      event.execute();
+                    }
+
+                    // 3. 无任务时可能进入休眠
+                    if (microtaskQueue.isEmpty && eventQueue.isEmpty) {
+                      waitForNewEvents();  // 这里会释放CPU资源
+                    }
+              }
+        }
