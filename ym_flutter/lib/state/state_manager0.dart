@@ -1,10 +1,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ym_flutter/state/state_demo2.dart';
 import 'package:ym_flutter/tool/ym_global.dart';
 import 'package:ym_flutter/tool/ym_style.dart';
 
 import 'package:ym_flutter/state/ym_state_manager_viewmodel.dart';
+
+import '00/ym_state_manager_viewmodel.dart';
 
 class YmStateManagerWidget extends StatelessWidget with YmStyle,YmGlobal{
   const YmStateManagerWidget({super.key});
@@ -18,6 +21,12 @@ class YmStateManagerWidget extends StatelessWidget with YmStyle,YmGlobal{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ElevatedButton(
+              onPressed: (){
+                Navigator.of(context).push(_createRoute(const StateDemo2Widget()));
+              },
+              child: const Text('6 ValueListenableBuilder的使用'),
+            ),
             YmStateManagerViewModel().buildItem("案例1：购物车(provider)",(){YmStateManagerViewModel.toPushNextPage(context,"案例1：购物车(provider)",YmStateManagerPages.ymStateManagerPageProvider);}),
             YmStateManagerViewModel().buildItem("案例2：个人信息(getx)",(){YmStateManagerViewModel.toPushNextPage(context,"案例2：个人信息(getx)",YmStateManagerPages.ymStateManagerPageGetx);}),
           ],
@@ -25,6 +34,22 @@ class YmStateManagerWidget extends StatelessWidget with YmStyle,YmGlobal{
       )
     );
   }
+}
+
+Route _createRoute(Widget nextPage) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation){
+      return nextPage;
+    },
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      return SlideTransition(position: animation.drive(tween), child: child);
+    },
+  );
 }
 
 ///

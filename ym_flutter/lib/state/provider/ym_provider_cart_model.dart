@@ -6,7 +6,7 @@ class YmProviderCartModel extends ChangeNotifier {
   //私有列表
   final List<YmCartProductModel> _items = [];
 
-  // 获取购物车商品（只读）
+  // 获取购物车商品（只读）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
   List<YmCartProductModel> get items => _items;
 
   //计算总价

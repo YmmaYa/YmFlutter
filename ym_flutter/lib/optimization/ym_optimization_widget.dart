@@ -5,6 +5,8 @@ import 'package:ym_flutter/state/ym_state_manager_viewmodel.dart';
 import 'package:ym_flutter/tool/ym_global.dart';
 import 'package:ym_flutter/tool/ym_style.dart';
 
+import '../state/00/ym_state_manager_viewmodel.dart';
+
 class YmOptimizationWidget extends StatelessWidget with YmStyle,YmGlobal{
   const YmOptimizationWidget({super.key});
 

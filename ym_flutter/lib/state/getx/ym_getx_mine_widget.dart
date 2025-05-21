@@ -2,9 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:ym_flutter/state/00/ym_state_manager_viewmodel.dart';
 import 'package:ym_flutter/state/getx/ym_getx_mine_Info_controller.dart';
-import 'package:ym_flutter/state/ym_state_manager_viewmodel.dart';
-import 'package:ym_flutter/tool/ym_log_util.dart';
 import 'package:ym_flutter/tool/ym_style.dart';
 
 class YmGetxMineWidget extends StatefulWidget{

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class WidgetDemo5Widget extends StatefulWidget {
   @override
-  _WidgetDemo5State createState() => _WidgetDemo5State();
+  State createState() => _WidgetDemo5State();
 }
 
 class _WidgetDemo5State extends State<WidgetDemo5Widget> {

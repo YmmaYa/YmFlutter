@@ -6,6 +6,7 @@ import 'package:ym_flutter/optimization/ym_optimization_viewmodel.dart';
 
 import 'package:ym_flutter/tool/ym_global.dart';
 import 'package:ym_flutter/widget/widget_demo5.dart';
+import 'package:ym_flutter/widget/widget_demo6.dart';
 
 class WidgetDemo0Widget extends StatelessWidget{
 
@@ -40,7 +41,13 @@ class WidgetDemo0Widget extends StatelessWidget{
                         onPressed: (){
                           Navigator.of(context).push(_createRoute(WidgetDemo5Widget()));
                           },
-                        child: Text('5 Builder的使用'),
+                        child: const Text('5 Builder的使用'),
+                      ),
+                      ElevatedButton(
+                        onPressed: (){
+                          Navigator.of(context).push(_createRoute(WidgetDemo6Widget()));
+                        },
+                        child: const Text('6 ValueListenableBuilder的使用'),
                       ),
                     ],
                   )
